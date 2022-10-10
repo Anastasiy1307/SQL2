@@ -1,0 +1,1097 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="adres">
+          <Key>
+            <PropertyRef Name="cod_adres" />
+          </Key>
+          <Property Name="cod_adres" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="street" Type="char" MaxLength="25" Nullable="false" />
+          <Property Name="House" Type="char" MaxLength="6" Nullable="false" />
+          <Property Name="gorod" Type="char" MaxLength="25" Nullable="false" />
+          <Property Name="kvartira" Type="char" MaxLength="4" Nullable="false" />
+          <Property Name="podezd" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="rayon" Type="char" MaxLength="50" />
+          <Property Name="oblast" Type="char" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ascent">
+          <Key>
+            <PropertyRef Name="id_ascent" />
+          </Key>
+          <Property Name="id_ascent" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="datastart" Type="date" Nullable="false" />
+          <Property Name="dataend" Type="date" Nullable="false" />
+          <Property Name="cod_mountains" Type="int" Nullable="false" />
+          <Property Name="cod_climber" Type="int" Nullable="false" />
+          <Property Name="cod_soprov" Type="int" Nullable="false" />
+          <Property Name="koll_uch" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="climber">
+          <Key>
+            <PropertyRef Name="cod_climber" />
+          </Key>
+          <Property Name="cod_climber" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name_" Type="char" MaxLength="50" Nullable="false" />
+          <Property Name="familia" Type="char" MaxLength="50" Nullable="false" />
+          <Property Name="otchestvo" Type="char" MaxLength="50" Nullable="false" />
+          <Property Name="cod_adres" Type="int" Nullable="false" />
+          <Property Name="telefon" Type="varchar" MaxLength="50" />
+          <Property Name="cod_pasporta" Type="int" Nullable="false" />
+          <Property Name="email" Type="char" MaxLength="255" />
+          <Property Name="cod_podgotovki" Type="int" />
+          <Property Name="Cod_dogovora" Type="int" Nullable="false" />
+          <Property Name="image" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Dogovor">
+          <Key>
+            <PropertyRef Name="id_dogovora" />
+          </Key>
+          <Property Name="id_dogovora" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nameofdogovor" Type="char" MaxLength="100" />
+          <Property Name="datazapolnenia" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="history_store">
+          <Key>
+            <PropertyRef Name="table_name" />
+            <PropertyRef Name="pk_date_dest" />
+          </Key>
+          <Property Name="timemark" Type="datetime" Nullable="false" />
+          <Property Name="table_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="pk_date_src" Type="nvarchar" MaxLength="400" Nullable="false" />
+          <Property Name="pk_date_dest" Type="nvarchar" MaxLength="400" Nullable="false" />
+          <Property Name="record_state" Type="smallint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="mountains">
+          <Key>
+            <PropertyRef Name="cod_mountains" />
+          </Key>
+          <Property Name="cod_mountains" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name_mountains" Type="char" MaxLength="30" Nullable="false" />
+          <Property Name="cod_stran" Type="int" Nullable="false" />
+          <Property Name="Cod_ascent" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="neschastnsluchai">
+          <Key>
+            <PropertyRef Name="kod_sluchay" />
+          </Key>
+          <Property Name="cod_climber" Type="int" Nullable="false" />
+          <Property Name="cod_pasporta" Type="int" Nullable="false" />
+          <Property Name="cod_soprov" Type="int" Nullable="false" />
+          <Property Name="travma" Type="char" MaxLength="255" Nullable="false" />
+          <Property Name="giv_net" Type="char" MaxLength="4" />
+          <Property Name="kod_sluchay" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="pasport">
+          <Key>
+            <PropertyRef Name="id_pasporta" />
+          </Key>
+          <Property Name="id_pasporta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nomer_pasporta" Type="int" Nullable="false" />
+          <Property Name="seria_pasporta" Type="int" Nullable="false" />
+          <Property Name="kod_podrazdelenia" Type="int" Nullable="false" />
+          <Property Name="data_vdachi" Type="date" Nullable="false" />
+          <Property Name="kem_vdan" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="pol" Type="char" MaxLength="4" Nullable="false" />
+          <Property Name="mesto_rogdenia" Type="char" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <EntityType Name="podgotovka">
+          <Key>
+            <PropertyRef Name="id_podgotovki" />
+          </Key>
+          <Property Name="id_mountains" Type="int" Nullable="false" />
+          <Property Name="id_podgotovki" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Kol_zanyatiy" Type="int" Nullable="false" />
+          <Property Name="datastart" Type="date" Nullable="false" />
+          <Property Name="dataend" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="pyt">
+          <Key>
+            <PropertyRef Name="cod_pyt" />
+          </Key>
+          <Property Name="cod_mountains" Type="int" Nullable="false" />
+          <Property Name="kolostanovok" Type="int" />
+          <Property Name="nameostanoki" Type="char" MaxLength="50" />
+          <Property Name="rastoyanieostanovkami" Type="int" />
+          <Property Name="cod_soprov" Type="int" Nullable="false" />
+          <Property Name="Cod_ascent" Type="int" Nullable="false" />
+          <Property Name="cod_pyt" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="soprov">
+          <Key>
+            <PropertyRef Name="cod_soprov" />
+          </Key>
+          <Property Name="cod_ascent" Type="int" Nullable="false" />
+          <Property Name="cod_soprov" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cod_pasporta" Type="int" Nullable="false" />
+          <Property Name="E_mail" Type="char" MaxLength="255" />
+          <Property Name="telefon" Type="char" MaxLength="25" />
+          <Property Name="cod_podgotovki" Type="int" Nullable="false" />
+          <Property Name="Cod_dogovora" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="strana">
+          <Key>
+            <PropertyRef Name="id_stran" />
+          </Key>
+          <Property Name="id_stran" Type="int" Nullable="false" />
+          <Property Name="strana" Type="char" MaxLength="50" Nullable="false" />
+          <Property Name="region" Type="char" MaxLength="25" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <Association Name="FK__climber__cod_adr__6E01572D">
+          <End Role="adres" Type="Self.adres" Multiplicity="1" />
+          <End Role="climber" Type="Self.climber" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="adres">
+              <PropertyRef Name="cod_adres" />
+            </Principal>
+            <Dependent Role="climber">
+              <PropertyRef Name="cod_adres" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__climber__Cod_dog__71D1E811">
+          <End Role="Dogovor" Type="Self.Dogovor" Multiplicity="1" />
+          <End Role="climber" Type="Self.climber" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dogovor">
+              <PropertyRef Name="id_dogovora" />
+            </Principal>
+            <Dependent Role="climber">
+              <PropertyRef Name="Cod_dogovora" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__climber__cod_pas__6FE99F9F">
+          <End Role="pasport" Type="Self.pasport" Multiplicity="1" />
+          <End Role="climber" Type="Self.climber" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pasport">
+              <PropertyRef Name="id_pasporta" />
+            </Principal>
+            <Dependent Role="climber">
+              <PropertyRef Name="cod_pasporta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__climber__cod_pod__70DDC3D8">
+          <End Role="podgotovka" Type="Self.podgotovka" Multiplicity="0..1" />
+          <End Role="climber" Type="Self.climber" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="podgotovka">
+              <PropertyRef Name="id_podgotovki" />
+            </Principal>
+            <Dependent Role="climber">
+              <PropertyRef Name="cod_podgotovki" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__mountains__Cod_a__1332DBDC">
+          <End Role="ascent" Type="Self.ascent" Multiplicity="1" />
+          <End Role="mountains" Type="Self.mountains" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ascent">
+              <PropertyRef Name="id_ascent" />
+            </Principal>
+            <Dependent Role="mountains">
+              <PropertyRef Name="Cod_ascent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__mountains__cod_s__123EB7A3">
+          <End Role="strana" Type="Self.strana" Multiplicity="1" />
+          <End Role="mountains" Type="Self.mountains" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="strana">
+              <PropertyRef Name="id_stran" />
+            </Principal>
+            <Dependent Role="mountains">
+              <PropertyRef Name="cod_stran" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__neschastn__cod_c__07C12930">
+          <End Role="climber" Type="Self.climber" Multiplicity="1" />
+          <End Role="neschastnsluchai" Type="Self.neschastnsluchai" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="climber">
+              <PropertyRef Name="cod_climber" />
+            </Principal>
+            <Dependent Role="neschastnsluchai">
+              <PropertyRef Name="cod_climber" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__neschastn__cod_p__08B54D69">
+          <End Role="pasport" Type="Self.pasport" Multiplicity="1" />
+          <End Role="neschastnsluchai" Type="Self.neschastnsluchai" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pasport">
+              <PropertyRef Name="id_pasporta" />
+            </Principal>
+            <Dependent Role="neschastnsluchai">
+              <PropertyRef Name="cod_pasporta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__neschastn__cod_s__09A971A2">
+          <End Role="soprov" Type="Self.soprov" Multiplicity="1" />
+          <End Role="neschastnsluchai" Type="Self.neschastnsluchai" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="soprov">
+              <PropertyRef Name="cod_soprov" />
+            </Principal>
+            <Dependent Role="neschastnsluchai">
+              <PropertyRef Name="cod_soprov" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__pyt__Cod_ascent__05D8E0BE">
+          <End Role="ascent" Type="Self.ascent" Multiplicity="1" />
+          <End Role="pyt" Type="Self.pyt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ascent">
+              <PropertyRef Name="id_ascent" />
+            </Principal>
+            <Dependent Role="pyt">
+              <PropertyRef Name="Cod_ascent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__pyt__cod_soprov__04E4BC85">
+          <End Role="soprov" Type="Self.soprov" Multiplicity="1" />
+          <End Role="pyt" Type="Self.pyt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="soprov">
+              <PropertyRef Name="cod_soprov" />
+            </Principal>
+            <Dependent Role="pyt">
+              <PropertyRef Name="cod_soprov" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__soprov__cod_asce__7C4F7684">
+          <End Role="ascent" Type="Self.ascent" Multiplicity="1" />
+          <End Role="soprov" Type="Self.soprov" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ascent">
+              <PropertyRef Name="id_ascent" />
+            </Principal>
+            <Dependent Role="soprov">
+              <PropertyRef Name="cod_ascent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__soprov__Cod_dogo__00200768">
+          <End Role="Dogovor" Type="Self.Dogovor" Multiplicity="1" />
+          <End Role="soprov" Type="Self.soprov" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dogovor">
+              <PropertyRef Name="id_dogovora" />
+            </Principal>
+            <Dependent Role="soprov">
+              <PropertyRef Name="Cod_dogovora" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__soprov__cod_pasp__7D439ABD">
+          <End Role="pasport" Type="Self.pasport" Multiplicity="1" />
+          <End Role="soprov" Type="Self.soprov" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pasport">
+              <PropertyRef Name="id_pasporta" />
+            </Principal>
+            <Dependent Role="soprov">
+              <PropertyRef Name="cod_pasporta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__soprov__cod_podg__7F2BE32F">
+          <End Role="podgotovka" Type="Self.podgotovka" Multiplicity="1" />
+          <End Role="soprov" Type="Self.soprov" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="podgotovka">
+              <PropertyRef Name="id_podgotovki" />
+            </Principal>
+            <Dependent Role="soprov">
+              <PropertyRef Name="cod_podgotovki" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_podgotovka_mountains">
+          <End Role="mountains" Type="Self.mountains" Multiplicity="1" />
+          <End Role="podgotovka" Type="Self.podgotovka" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mountains">
+              <PropertyRef Name="cod_mountains" />
+            </Principal>
+            <Dependent Role="podgotovka">
+              <PropertyRef Name="id_mountains" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_pyt_mountains">
+          <End Role="mountains" Type="Self.mountains" Multiplicity="1" />
+          <End Role="pyt" Type="Self.pyt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mountains">
+              <PropertyRef Name="cod_mountains" />
+            </Principal>
+            <Dependent Role="pyt">
+              <PropertyRef Name="cod_mountains" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище ModelContainer">
+          <EntitySet Name="adres" EntityType="Self.adres" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ascent" EntityType="Self.ascent" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="climber" EntityType="Self.climber" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Dogovor" EntityType="Self.Dogovor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="history_store" EntityType="Self.history_store" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="mountains" EntityType="Self.mountains" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="neschastnsluchai" EntityType="Self.neschastnsluchai" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="pasport" EntityType="Self.pasport" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="podgotovka" EntityType="Self.podgotovka" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="pyt" EntityType="Self.pyt" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="soprov" EntityType="Self.soprov" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="strana" EntityType="Self.strana" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__climber__cod_adr__6E01572D" Association="Self.FK__climber__cod_adr__6E01572D">
+            <End Role="adres" EntitySet="adres" />
+            <End Role="climber" EntitySet="climber" />
+          </AssociationSet>
+          <AssociationSet Name="FK__climber__Cod_dog__71D1E811" Association="Self.FK__climber__Cod_dog__71D1E811">
+            <End Role="Dogovor" EntitySet="Dogovor" />
+            <End Role="climber" EntitySet="climber" />
+          </AssociationSet>
+          <AssociationSet Name="FK__climber__cod_pas__6FE99F9F" Association="Self.FK__climber__cod_pas__6FE99F9F">
+            <End Role="pasport" EntitySet="pasport" />
+            <End Role="climber" EntitySet="climber" />
+          </AssociationSet>
+          <AssociationSet Name="FK__climber__cod_pod__70DDC3D8" Association="Self.FK__climber__cod_pod__70DDC3D8">
+            <End Role="podgotovka" EntitySet="podgotovka" />
+            <End Role="climber" EntitySet="climber" />
+          </AssociationSet>
+          <AssociationSet Name="FK__mountains__Cod_a__1332DBDC" Association="Self.FK__mountains__Cod_a__1332DBDC">
+            <End Role="ascent" EntitySet="ascent" />
+            <End Role="mountains" EntitySet="mountains" />
+          </AssociationSet>
+          <AssociationSet Name="FK__mountains__cod_s__123EB7A3" Association="Self.FK__mountains__cod_s__123EB7A3">
+            <End Role="strana" EntitySet="strana" />
+            <End Role="mountains" EntitySet="mountains" />
+          </AssociationSet>
+          <AssociationSet Name="FK__neschastn__cod_c__07C12930" Association="Self.FK__neschastn__cod_c__07C12930">
+            <End Role="climber" EntitySet="climber" />
+            <End Role="neschastnsluchai" EntitySet="neschastnsluchai" />
+          </AssociationSet>
+          <AssociationSet Name="FK__neschastn__cod_p__08B54D69" Association="Self.FK__neschastn__cod_p__08B54D69">
+            <End Role="pasport" EntitySet="pasport" />
+            <End Role="neschastnsluchai" EntitySet="neschastnsluchai" />
+          </AssociationSet>
+          <AssociationSet Name="FK__neschastn__cod_s__09A971A2" Association="Self.FK__neschastn__cod_s__09A971A2">
+            <End Role="soprov" EntitySet="soprov" />
+            <End Role="neschastnsluchai" EntitySet="neschastnsluchai" />
+          </AssociationSet>
+          <AssociationSet Name="FK__pyt__Cod_ascent__05D8E0BE" Association="Self.FK__pyt__Cod_ascent__05D8E0BE">
+            <End Role="ascent" EntitySet="ascent" />
+            <End Role="pyt" EntitySet="pyt" />
+          </AssociationSet>
+          <AssociationSet Name="FK__pyt__cod_soprov__04E4BC85" Association="Self.FK__pyt__cod_soprov__04E4BC85">
+            <End Role="soprov" EntitySet="soprov" />
+            <End Role="pyt" EntitySet="pyt" />
+          </AssociationSet>
+          <AssociationSet Name="FK__soprov__cod_asce__7C4F7684" Association="Self.FK__soprov__cod_asce__7C4F7684">
+            <End Role="ascent" EntitySet="ascent" />
+            <End Role="soprov" EntitySet="soprov" />
+          </AssociationSet>
+          <AssociationSet Name="FK__soprov__Cod_dogo__00200768" Association="Self.FK__soprov__Cod_dogo__00200768">
+            <End Role="Dogovor" EntitySet="Dogovor" />
+            <End Role="soprov" EntitySet="soprov" />
+          </AssociationSet>
+          <AssociationSet Name="FK__soprov__cod_pasp__7D439ABD" Association="Self.FK__soprov__cod_pasp__7D439ABD">
+            <End Role="pasport" EntitySet="pasport" />
+            <End Role="soprov" EntitySet="soprov" />
+          </AssociationSet>
+          <AssociationSet Name="FK__soprov__cod_podg__7F2BE32F" Association="Self.FK__soprov__cod_podg__7F2BE32F">
+            <End Role="podgotovka" EntitySet="podgotovka" />
+            <End Role="soprov" EntitySet="soprov" />
+          </AssociationSet>
+          <AssociationSet Name="FK_podgotovka_mountains" Association="Self.FK_podgotovka_mountains">
+            <End Role="mountains" EntitySet="mountains" />
+            <End Role="podgotovka" EntitySet="podgotovka" />
+          </AssociationSet>
+          <AssociationSet Name="FK_pyt_mountains" Association="Self.FK_pyt_mountains">
+            <End Role="mountains" EntitySet="mountains" />
+            <End Role="pyt" EntitySet="pyt" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="adres">
+          <Key>
+            <PropertyRef Name="cod_adres" />
+          </Key>
+          <Property Name="cod_adres" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="street" Type="String" MaxLength="25" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="House" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="gorod" Type="String" MaxLength="25" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="kvartira" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="podezd" Type="String" MaxLength="2" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="rayon" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+          <Property Name="oblast" Type="String" MaxLength="100" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="climber" Relationship="Self.FK__climber__cod_adr__6E01572D" FromRole="adres" ToRole="climber" />
+        </EntityType>
+        <EntityType Name="ascent">
+          <Key>
+            <PropertyRef Name="id_ascent" />
+          </Key>
+          <Property Name="id_ascent" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="datastart" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="dataend" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="cod_mountains" Type="Int32" Nullable="false" />
+          <Property Name="cod_climber" Type="Int32" Nullable="false" />
+          <Property Name="cod_soprov" Type="Int32" Nullable="false" />
+          <Property Name="koll_uch" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="mountains" Relationship="Self.FK__mountains__Cod_a__1332DBDC" FromRole="ascent" ToRole="mountains" />
+          <NavigationProperty Name="pyt" Relationship="Self.FK__pyt__Cod_ascent__05D8E0BE" FromRole="ascent" ToRole="pyt" />
+          <NavigationProperty Name="soprov" Relationship="Self.FK__soprov__cod_asce__7C4F7684" FromRole="ascent" ToRole="soprov" />
+        </EntityType>
+        <EntityType Name="climber">
+          <Key>
+            <PropertyRef Name="cod_climber" />
+          </Key>
+          <Property Name="cod_climber" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name_" Type="String" MaxLength="50" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="familia" Type="String" MaxLength="50" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="otchestvo" Type="String" MaxLength="50" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="cod_adres" Type="Int32" Nullable="false" />
+          <Property Name="telefon" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="cod_pasporta" Type="Int32" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="255" FixedLength="true" Unicode="false" />
+          <Property Name="cod_podgotovki" Type="Int32" />
+          <Property Name="Cod_dogovora" Type="Int32" Nullable="false" />
+          <Property Name="image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="adres" Relationship="Self.FK__climber__cod_adr__6E01572D" FromRole="climber" ToRole="adres" />
+          <NavigationProperty Name="Dogovor" Relationship="Self.FK__climber__Cod_dog__71D1E811" FromRole="climber" ToRole="Dogovor" />
+          <NavigationProperty Name="pasport" Relationship="Self.FK__climber__cod_pas__6FE99F9F" FromRole="climber" ToRole="pasport" />
+          <NavigationProperty Name="podgotovka" Relationship="Self.FK__climber__cod_pod__70DDC3D8" FromRole="climber" ToRole="podgotovka" />
+          <NavigationProperty Name="neschastnsluchai" Relationship="Self.FK__neschastn__cod_c__07C12930" FromRole="climber" ToRole="neschastnsluchai" />
+        </EntityType>
+        <EntityType Name="Dogovor">
+          <Key>
+            <PropertyRef Name="id_dogovora" />
+          </Key>
+          <Property Name="id_dogovora" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nameofdogovor" Type="String" MaxLength="100" FixedLength="true" Unicode="false" />
+          <Property Name="datazapolnenia" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="climber" Relationship="Self.FK__climber__Cod_dog__71D1E811" FromRole="Dogovor" ToRole="climber" />
+          <NavigationProperty Name="soprov" Relationship="Self.FK__soprov__Cod_dogo__00200768" FromRole="Dogovor" ToRole="soprov" />
+        </EntityType>
+        <EntityType Name="history_store">
+          <Key>
+            <PropertyRef Name="table_name" />
+            <PropertyRef Name="pk_date_dest" />
+          </Key>
+          <Property Name="timemark" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="table_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="pk_date_src" Type="String" MaxLength="400" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="pk_date_dest" Type="String" MaxLength="400" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="record_state" Type="Int16" Nullable="false" />
+        </EntityType>
+        <EntityType Name="mountains">
+          <Key>
+            <PropertyRef Name="cod_mountains" />
+          </Key>
+          <Property Name="cod_mountains" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name_mountains" Type="String" MaxLength="30" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="cod_stran" Type="Int32" Nullable="false" />
+          <Property Name="Cod_ascent" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ascent" Relationship="Self.FK__mountains__Cod_a__1332DBDC" FromRole="mountains" ToRole="ascent" />
+          <NavigationProperty Name="strana" Relationship="Self.FK__mountains__cod_s__123EB7A3" FromRole="mountains" ToRole="strana" />
+          <NavigationProperty Name="podgotovka" Relationship="Self.FK_podgotovka_mountains" FromRole="mountains" ToRole="podgotovka" />
+          <NavigationProperty Name="pyt" Relationship="Self.FK_pyt_mountains" FromRole="mountains" ToRole="pyt" />
+        </EntityType>
+        <EntityType Name="neschastnsluchai">
+          <Key>
+            <PropertyRef Name="kod_sluchay" />
+          </Key>
+          <Property Name="cod_climber" Type="Int32" Nullable="false" />
+          <Property Name="cod_pasporta" Type="Int32" Nullable="false" />
+          <Property Name="cod_soprov" Type="Int32" Nullable="false" />
+          <Property Name="travma" Type="String" MaxLength="255" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="giv_net" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
+          <Property Name="kod_sluchay" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="climber" Relationship="Self.FK__neschastn__cod_c__07C12930" FromRole="neschastnsluchai" ToRole="climber" />
+          <NavigationProperty Name="pasport" Relationship="Self.FK__neschastn__cod_p__08B54D69" FromRole="neschastnsluchai" ToRole="pasport" />
+          <NavigationProperty Name="soprov" Relationship="Self.FK__neschastn__cod_s__09A971A2" FromRole="neschastnsluchai" ToRole="soprov" />
+        </EntityType>
+        <EntityType Name="pasport">
+          <Key>
+            <PropertyRef Name="id_pasporta" />
+          </Key>
+          <Property Name="id_pasporta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nomer_pasporta" Type="Int32" Nullable="false" />
+          <Property Name="seria_pasporta" Type="Int32" Nullable="false" />
+          <Property Name="kod_podrazdelenia" Type="Int32" Nullable="false" />
+          <Property Name="data_vdachi" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="kem_vdan" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="pol" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="mesto_rogdenia" Type="String" MaxLength="200" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="climber" Relationship="Self.FK__climber__cod_pas__6FE99F9F" FromRole="pasport" ToRole="climber" />
+          <NavigationProperty Name="neschastnsluchai" Relationship="Self.FK__neschastn__cod_p__08B54D69" FromRole="pasport" ToRole="neschastnsluchai" />
+          <NavigationProperty Name="soprov" Relationship="Self.FK__soprov__cod_pasp__7D439ABD" FromRole="pasport" ToRole="soprov" />
+        </EntityType>
+        <EntityType Name="podgotovka">
+          <Key>
+            <PropertyRef Name="id_podgotovki" />
+          </Key>
+          <Property Name="id_mountains" Type="Int32" Nullable="false" />
+          <Property Name="id_podgotovki" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Kol_zanyatiy" Type="Int32" Nullable="false" />
+          <Property Name="datastart" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="dataend" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="climber" Relationship="Self.FK__climber__cod_pod__70DDC3D8" FromRole="podgotovka" ToRole="climber" />
+          <NavigationProperty Name="mountains" Relationship="Self.FK_podgotovka_mountains" FromRole="podgotovka" ToRole="mountains" />
+          <NavigationProperty Name="soprov" Relationship="Self.FK__soprov__cod_podg__7F2BE32F" FromRole="podgotovka" ToRole="soprov" />
+        </EntityType>
+        <EntityType Name="pyt">
+          <Key>
+            <PropertyRef Name="cod_pyt" />
+          </Key>
+          <Property Name="cod_mountains" Type="Int32" Nullable="false" />
+          <Property Name="kolostanovok" Type="Int32" />
+          <Property Name="nameostanoki" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+          <Property Name="rastoyanieostanovkami" Type="Int32" />
+          <Property Name="cod_soprov" Type="Int32" Nullable="false" />
+          <Property Name="Cod_ascent" Type="Int32" Nullable="false" />
+          <Property Name="cod_pyt" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="ascent" Relationship="Self.FK__pyt__Cod_ascent__05D8E0BE" FromRole="pyt" ToRole="ascent" />
+          <NavigationProperty Name="mountains" Relationship="Self.FK_pyt_mountains" FromRole="pyt" ToRole="mountains" />
+          <NavigationProperty Name="soprov" Relationship="Self.FK__pyt__cod_soprov__04E4BC85" FromRole="pyt" ToRole="soprov" />
+        </EntityType>
+        <EntityType Name="soprov">
+          <Key>
+            <PropertyRef Name="cod_soprov" />
+          </Key>
+          <Property Name="cod_ascent" Type="Int32" Nullable="false" />
+          <Property Name="cod_soprov" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cod_pasporta" Type="Int32" Nullable="false" />
+          <Property Name="E_mail" Type="String" MaxLength="255" FixedLength="true" Unicode="false" />
+          <Property Name="telefon" Type="String" MaxLength="25" FixedLength="true" Unicode="false" />
+          <Property Name="cod_podgotovki" Type="Int32" Nullable="false" />
+          <Property Name="Cod_dogovora" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ascent" Relationship="Self.FK__soprov__cod_asce__7C4F7684" FromRole="soprov" ToRole="ascent" />
+          <NavigationProperty Name="Dogovor" Relationship="Self.FK__soprov__Cod_dogo__00200768" FromRole="soprov" ToRole="Dogovor" />
+          <NavigationProperty Name="neschastnsluchai" Relationship="Self.FK__neschastn__cod_s__09A971A2" FromRole="soprov" ToRole="neschastnsluchai" />
+          <NavigationProperty Name="pasport" Relationship="Self.FK__soprov__cod_pasp__7D439ABD" FromRole="soprov" ToRole="pasport" />
+          <NavigationProperty Name="podgotovka" Relationship="Self.FK__soprov__cod_podg__7F2BE32F" FromRole="soprov" ToRole="podgotovka" />
+          <NavigationProperty Name="pyt" Relationship="Self.FK__pyt__cod_soprov__04E4BC85" FromRole="soprov" ToRole="pyt" />
+        </EntityType>
+        <EntityType Name="strana">
+          <Key>
+            <PropertyRef Name="id_stran" />
+          </Key>
+          <Property Name="id_stran" Type="Int32" Nullable="false" />
+          <Property Name="strana1" Type="String" MaxLength="50" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="region" Type="String" MaxLength="25" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="mountains" Relationship="Self.FK__mountains__cod_s__123EB7A3" FromRole="strana" ToRole="mountains" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK__climber__cod_adr__6E01572D">
+          <End Role="adres" Type="Self.adres" Multiplicity="1" />
+          <End Role="climber" Type="Self.climber" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="adres">
+              <PropertyRef Name="cod_adres" />
+            </Principal>
+            <Dependent Role="climber">
+              <PropertyRef Name="cod_adres" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__mountains__Cod_a__1332DBDC">
+          <End Role="ascent" Type="Self.ascent" Multiplicity="1" />
+          <End Role="mountains" Type="Self.mountains" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ascent">
+              <PropertyRef Name="id_ascent" />
+            </Principal>
+            <Dependent Role="mountains">
+              <PropertyRef Name="Cod_ascent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__pyt__Cod_ascent__05D8E0BE">
+          <End Role="ascent" Type="Self.ascent" Multiplicity="1" />
+          <End Role="pyt" Type="Self.pyt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ascent">
+              <PropertyRef Name="id_ascent" />
+            </Principal>
+            <Dependent Role="pyt">
+              <PropertyRef Name="Cod_ascent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__soprov__cod_asce__7C4F7684">
+          <End Role="ascent" Type="Self.ascent" Multiplicity="1" />
+          <End Role="soprov" Type="Self.soprov" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ascent">
+              <PropertyRef Name="id_ascent" />
+            </Principal>
+            <Dependent Role="soprov">
+              <PropertyRef Name="cod_ascent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__climber__Cod_dog__71D1E811">
+          <End Role="Dogovor" Type="Self.Dogovor" Multiplicity="1" />
+          <End Role="climber" Type="Self.climber" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dogovor">
+              <PropertyRef Name="id_dogovora" />
+            </Principal>
+            <Dependent Role="climber">
+              <PropertyRef Name="Cod_dogovora" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__climber__cod_pas__6FE99F9F">
+          <End Role="pasport" Type="Self.pasport" Multiplicity="1" />
+          <End Role="climber" Type="Self.climber" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pasport">
+              <PropertyRef Name="id_pasporta" />
+            </Principal>
+            <Dependent Role="climber">
+              <PropertyRef Name="cod_pasporta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__climber__cod_pod__70DDC3D8">
+          <End Role="podgotovka" Type="Self.podgotovka" Multiplicity="0..1" />
+          <End Role="climber" Type="Self.climber" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="podgotovka">
+              <PropertyRef Name="id_podgotovki" />
+            </Principal>
+            <Dependent Role="climber">
+              <PropertyRef Name="cod_podgotovki" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__neschastn__cod_c__07C12930">
+          <End Role="climber" Type="Self.climber" Multiplicity="1" />
+          <End Role="neschastnsluchai" Type="Self.neschastnsluchai" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="climber">
+              <PropertyRef Name="cod_climber" />
+            </Principal>
+            <Dependent Role="neschastnsluchai">
+              <PropertyRef Name="cod_climber" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__soprov__Cod_dogo__00200768">
+          <End Role="Dogovor" Type="Self.Dogovor" Multiplicity="1" />
+          <End Role="soprov" Type="Self.soprov" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dogovor">
+              <PropertyRef Name="id_dogovora" />
+            </Principal>
+            <Dependent Role="soprov">
+              <PropertyRef Name="Cod_dogovora" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__mountains__cod_s__123EB7A3">
+          <End Role="strana" Type="Self.strana" Multiplicity="1" />
+          <End Role="mountains" Type="Self.mountains" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="strana">
+              <PropertyRef Name="id_stran" />
+            </Principal>
+            <Dependent Role="mountains">
+              <PropertyRef Name="cod_stran" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_podgotovka_mountains">
+          <End Role="mountains" Type="Self.mountains" Multiplicity="1" />
+          <End Role="podgotovka" Type="Self.podgotovka" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mountains">
+              <PropertyRef Name="cod_mountains" />
+            </Principal>
+            <Dependent Role="podgotovka">
+              <PropertyRef Name="id_mountains" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_pyt_mountains">
+          <End Role="mountains" Type="Self.mountains" Multiplicity="1" />
+          <End Role="pyt" Type="Self.pyt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mountains">
+              <PropertyRef Name="cod_mountains" />
+            </Principal>
+            <Dependent Role="pyt">
+              <PropertyRef Name="cod_mountains" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__neschastn__cod_p__08B54D69">
+          <End Role="pasport" Type="Self.pasport" Multiplicity="1" />
+          <End Role="neschastnsluchai" Type="Self.neschastnsluchai" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pasport">
+              <PropertyRef Name="id_pasporta" />
+            </Principal>
+            <Dependent Role="neschastnsluchai">
+              <PropertyRef Name="cod_pasporta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__neschastn__cod_s__09A971A2">
+          <End Role="soprov" Type="Self.soprov" Multiplicity="1" />
+          <End Role="neschastnsluchai" Type="Self.neschastnsluchai" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="soprov">
+              <PropertyRef Name="cod_soprov" />
+            </Principal>
+            <Dependent Role="neschastnsluchai">
+              <PropertyRef Name="cod_soprov" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__soprov__cod_pasp__7D439ABD">
+          <End Role="pasport" Type="Self.pasport" Multiplicity="1" />
+          <End Role="soprov" Type="Self.soprov" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pasport">
+              <PropertyRef Name="id_pasporta" />
+            </Principal>
+            <Dependent Role="soprov">
+              <PropertyRef Name="cod_pasporta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__soprov__cod_podg__7F2BE32F">
+          <End Role="podgotovka" Type="Self.podgotovka" Multiplicity="1" />
+          <End Role="soprov" Type="Self.soprov" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="podgotovka">
+              <PropertyRef Name="id_podgotovki" />
+            </Principal>
+            <Dependent Role="soprov">
+              <PropertyRef Name="cod_podgotovki" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__pyt__cod_soprov__04E4BC85">
+          <End Role="soprov" Type="Self.soprov" Multiplicity="1" />
+          <End Role="pyt" Type="Self.pyt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="soprov">
+              <PropertyRef Name="cod_soprov" />
+            </Principal>
+            <Dependent Role="pyt">
+              <PropertyRef Name="cod_soprov" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="adres" EntityType="Self.adres" />
+          <EntitySet Name="ascent" EntityType="Self.ascent" />
+          <EntitySet Name="climber" EntityType="Self.climber" />
+          <EntitySet Name="Dogovor" EntityType="Self.Dogovor" />
+          <EntitySet Name="history_store" EntityType="Self.history_store" />
+          <EntitySet Name="mountains" EntityType="Self.mountains" />
+          <EntitySet Name="neschastnsluchai" EntityType="Self.neschastnsluchai" />
+          <EntitySet Name="pasport" EntityType="Self.pasport" />
+          <EntitySet Name="podgotovka" EntityType="Self.podgotovka" />
+          <EntitySet Name="pyt" EntityType="Self.pyt" />
+          <EntitySet Name="soprov" EntityType="Self.soprov" />
+          <EntitySet Name="strana" EntityType="Self.strana" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <AssociationSet Name="FK__climber__cod_adr__6E01572D" Association="Self.FK__climber__cod_adr__6E01572D">
+            <End Role="adres" EntitySet="adres" />
+            <End Role="climber" EntitySet="climber" />
+          </AssociationSet>
+          <AssociationSet Name="FK__mountains__Cod_a__1332DBDC" Association="Self.FK__mountains__Cod_a__1332DBDC">
+            <End Role="ascent" EntitySet="ascent" />
+            <End Role="mountains" EntitySet="mountains" />
+          </AssociationSet>
+          <AssociationSet Name="FK__pyt__Cod_ascent__05D8E0BE" Association="Self.FK__pyt__Cod_ascent__05D8E0BE">
+            <End Role="ascent" EntitySet="ascent" />
+            <End Role="pyt" EntitySet="pyt" />
+          </AssociationSet>
+          <AssociationSet Name="FK__soprov__cod_asce__7C4F7684" Association="Self.FK__soprov__cod_asce__7C4F7684">
+            <End Role="ascent" EntitySet="ascent" />
+            <End Role="soprov" EntitySet="soprov" />
+          </AssociationSet>
+          <AssociationSet Name="FK__climber__Cod_dog__71D1E811" Association="Self.FK__climber__Cod_dog__71D1E811">
+            <End Role="Dogovor" EntitySet="Dogovor" />
+            <End Role="climber" EntitySet="climber" />
+          </AssociationSet>
+          <AssociationSet Name="FK__climber__cod_pas__6FE99F9F" Association="Self.FK__climber__cod_pas__6FE99F9F">
+            <End Role="pasport" EntitySet="pasport" />
+            <End Role="climber" EntitySet="climber" />
+          </AssociationSet>
+          <AssociationSet Name="FK__climber__cod_pod__70DDC3D8" Association="Self.FK__climber__cod_pod__70DDC3D8">
+            <End Role="podgotovka" EntitySet="podgotovka" />
+            <End Role="climber" EntitySet="climber" />
+          </AssociationSet>
+          <AssociationSet Name="FK__neschastn__cod_c__07C12930" Association="Self.FK__neschastn__cod_c__07C12930">
+            <End Role="climber" EntitySet="climber" />
+            <End Role="neschastnsluchai" EntitySet="neschastnsluchai" />
+          </AssociationSet>
+          <AssociationSet Name="FK__soprov__Cod_dogo__00200768" Association="Self.FK__soprov__Cod_dogo__00200768">
+            <End Role="Dogovor" EntitySet="Dogovor" />
+            <End Role="soprov" EntitySet="soprov" />
+          </AssociationSet>
+          <AssociationSet Name="FK__mountains__cod_s__123EB7A3" Association="Self.FK__mountains__cod_s__123EB7A3">
+            <End Role="strana" EntitySet="strana" />
+            <End Role="mountains" EntitySet="mountains" />
+          </AssociationSet>
+          <AssociationSet Name="FK_podgotovka_mountains" Association="Self.FK_podgotovka_mountains">
+            <End Role="mountains" EntitySet="mountains" />
+            <End Role="podgotovka" EntitySet="podgotovka" />
+          </AssociationSet>
+          <AssociationSet Name="FK_pyt_mountains" Association="Self.FK_pyt_mountains">
+            <End Role="mountains" EntitySet="mountains" />
+            <End Role="pyt" EntitySet="pyt" />
+          </AssociationSet>
+          <AssociationSet Name="FK__neschastn__cod_p__08B54D69" Association="Self.FK__neschastn__cod_p__08B54D69">
+            <End Role="pasport" EntitySet="pasport" />
+            <End Role="neschastnsluchai" EntitySet="neschastnsluchai" />
+          </AssociationSet>
+          <AssociationSet Name="FK__neschastn__cod_s__09A971A2" Association="Self.FK__neschastn__cod_s__09A971A2">
+            <End Role="soprov" EntitySet="soprov" />
+            <End Role="neschastnsluchai" EntitySet="neschastnsluchai" />
+          </AssociationSet>
+          <AssociationSet Name="FK__soprov__cod_pasp__7D439ABD" Association="Self.FK__soprov__cod_pasp__7D439ABD">
+            <End Role="pasport" EntitySet="pasport" />
+            <End Role="soprov" EntitySet="soprov" />
+          </AssociationSet>
+          <AssociationSet Name="FK__soprov__cod_podg__7F2BE32F" Association="Self.FK__soprov__cod_podg__7F2BE32F">
+            <End Role="podgotovka" EntitySet="podgotovka" />
+            <End Role="soprov" EntitySet="soprov" />
+          </AssociationSet>
+          <AssociationSet Name="FK__pyt__cod_soprov__04E4BC85" Association="Self.FK__pyt__cod_soprov__04E4BC85">
+            <End Role="soprov" EntitySet="soprov" />
+            <End Role="pyt" EntitySet="pyt" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище ModelContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="adres">
+            <EntityTypeMapping TypeName="Model.adres">
+              <MappingFragment StoreEntitySet="adres">
+                <ScalarProperty Name="cod_adres" ColumnName="cod_adres" />
+                <ScalarProperty Name="street" ColumnName="street" />
+                <ScalarProperty Name="House" ColumnName="House" />
+                <ScalarProperty Name="gorod" ColumnName="gorod" />
+                <ScalarProperty Name="kvartira" ColumnName="kvartira" />
+                <ScalarProperty Name="podezd" ColumnName="podezd" />
+                <ScalarProperty Name="rayon" ColumnName="rayon" />
+                <ScalarProperty Name="oblast" ColumnName="oblast" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ascent">
+            <EntityTypeMapping TypeName="Model.ascent">
+              <MappingFragment StoreEntitySet="ascent">
+                <ScalarProperty Name="id_ascent" ColumnName="id_ascent" />
+                <ScalarProperty Name="datastart" ColumnName="datastart" />
+                <ScalarProperty Name="dataend" ColumnName="dataend" />
+                <ScalarProperty Name="cod_mountains" ColumnName="cod_mountains" />
+                <ScalarProperty Name="cod_climber" ColumnName="cod_climber" />
+                <ScalarProperty Name="cod_soprov" ColumnName="cod_soprov" />
+                <ScalarProperty Name="koll_uch" ColumnName="koll_uch" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="climber">
+            <EntityTypeMapping TypeName="Model.climber">
+              <MappingFragment StoreEntitySet="climber">
+                <ScalarProperty Name="cod_climber" ColumnName="cod_climber" />
+                <ScalarProperty Name="name_" ColumnName="name_" />
+                <ScalarProperty Name="familia" ColumnName="familia" />
+                <ScalarProperty Name="otchestvo" ColumnName="otchestvo" />
+                <ScalarProperty Name="cod_adres" ColumnName="cod_adres" />
+                <ScalarProperty Name="telefon" ColumnName="telefon" />
+                <ScalarProperty Name="cod_pasporta" ColumnName="cod_pasporta" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="cod_podgotovki" ColumnName="cod_podgotovki" />
+                <ScalarProperty Name="Cod_dogovora" ColumnName="Cod_dogovora" />
+                <ScalarProperty Name="image" ColumnName="image" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Dogovor">
+            <EntityTypeMapping TypeName="Model.Dogovor">
+              <MappingFragment StoreEntitySet="Dogovor">
+                <ScalarProperty Name="id_dogovora" ColumnName="id_dogovora" />
+                <ScalarProperty Name="nameofdogovor" ColumnName="nameofdogovor" />
+                <ScalarProperty Name="datazapolnenia" ColumnName="datazapolnenia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="history_store">
+            <EntityTypeMapping TypeName="Model.history_store">
+              <MappingFragment StoreEntitySet="history_store">
+                <ScalarProperty Name="timemark" ColumnName="timemark" />
+                <ScalarProperty Name="table_name" ColumnName="table_name" />
+                <ScalarProperty Name="pk_date_src" ColumnName="pk_date_src" />
+                <ScalarProperty Name="pk_date_dest" ColumnName="pk_date_dest" />
+                <ScalarProperty Name="record_state" ColumnName="record_state" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mountains">
+            <EntityTypeMapping TypeName="Model.mountains">
+              <MappingFragment StoreEntitySet="mountains">
+                <ScalarProperty Name="cod_mountains" ColumnName="cod_mountains" />
+                <ScalarProperty Name="name_mountains" ColumnName="name_mountains" />
+                <ScalarProperty Name="cod_stran" ColumnName="cod_stran" />
+                <ScalarProperty Name="Cod_ascent" ColumnName="Cod_ascent" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="neschastnsluchai">
+            <EntityTypeMapping TypeName="Model.neschastnsluchai">
+              <MappingFragment StoreEntitySet="neschastnsluchai">
+                <ScalarProperty Name="cod_climber" ColumnName="cod_climber" />
+                <ScalarProperty Name="cod_pasporta" ColumnName="cod_pasporta" />
+                <ScalarProperty Name="cod_soprov" ColumnName="cod_soprov" />
+                <ScalarProperty Name="travma" ColumnName="travma" />
+                <ScalarProperty Name="giv_net" ColumnName="giv_net" />
+                <ScalarProperty Name="kod_sluchay" ColumnName="kod_sluchay" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="pasport">
+            <EntityTypeMapping TypeName="Model.pasport">
+              <MappingFragment StoreEntitySet="pasport">
+                <ScalarProperty Name="id_pasporta" ColumnName="id_pasporta" />
+                <ScalarProperty Name="nomer_pasporta" ColumnName="nomer_pasporta" />
+                <ScalarProperty Name="seria_pasporta" ColumnName="seria_pasporta" />
+                <ScalarProperty Name="kod_podrazdelenia" ColumnName="kod_podrazdelenia" />
+                <ScalarProperty Name="data_vdachi" ColumnName="data_vdachi" />
+                <ScalarProperty Name="kem_vdan" ColumnName="kem_vdan" />
+                <ScalarProperty Name="pol" ColumnName="pol" />
+                <ScalarProperty Name="mesto_rogdenia" ColumnName="mesto_rogdenia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="podgotovka">
+            <EntityTypeMapping TypeName="Model.podgotovka">
+              <MappingFragment StoreEntitySet="podgotovka">
+                <ScalarProperty Name="id_mountains" ColumnName="id_mountains" />
+                <ScalarProperty Name="id_podgotovki" ColumnName="id_podgotovki" />
+                <ScalarProperty Name="Kol_zanyatiy" ColumnName="Kol_zanyatiy" />
+                <ScalarProperty Name="datastart" ColumnName="datastart" />
+                <ScalarProperty Name="dataend" ColumnName="dataend" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="pyt">
+            <EntityTypeMapping TypeName="Model.pyt">
+              <MappingFragment StoreEntitySet="pyt">
+                <ScalarProperty Name="cod_mountains" ColumnName="cod_mountains" />
+                <ScalarProperty Name="kolostanovok" ColumnName="kolostanovok" />
+                <ScalarProperty Name="nameostanoki" ColumnName="nameostanoki" />
+                <ScalarProperty Name="rastoyanieostanovkami" ColumnName="rastoyanieostanovkami" />
+                <ScalarProperty Name="cod_soprov" ColumnName="cod_soprov" />
+                <ScalarProperty Name="Cod_ascent" ColumnName="Cod_ascent" />
+                <ScalarProperty Name="cod_pyt" ColumnName="cod_pyt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="soprov">
+            <EntityTypeMapping TypeName="Model.soprov">
+              <MappingFragment StoreEntitySet="soprov">
+                <ScalarProperty Name="cod_ascent" ColumnName="cod_ascent" />
+                <ScalarProperty Name="cod_soprov" ColumnName="cod_soprov" />
+                <ScalarProperty Name="cod_pasporta" ColumnName="cod_pasporta" />
+                <ScalarProperty Name="E_mail" ColumnName="E_mail" />
+                <ScalarProperty Name="telefon" ColumnName="telefon" />
+                <ScalarProperty Name="cod_podgotovki" ColumnName="cod_podgotovki" />
+                <ScalarProperty Name="Cod_dogovora" ColumnName="Cod_dogovora" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="strana">
+            <EntityTypeMapping TypeName="Model.strana">
+              <MappingFragment StoreEntitySet="strana">
+                <ScalarProperty Name="id_stran" ColumnName="id_stran" />
+                <ScalarProperty Name="strana1" ColumnName="strana" />
+                <ScalarProperty Name="region" ColumnName="region" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="Model.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

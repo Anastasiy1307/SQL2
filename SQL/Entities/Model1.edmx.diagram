@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="bf16b05f0c6b4a4da089a8420aaee994" Name="Diagram1" ZoomLevel="34">
+        <EntityTypeShape EntityType="Model.adres" Width="1.5" PointX="5.25" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.ascent" Width="1.5" PointX="0.75" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.climber" Width="1.5" PointX="7.5" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Dogovor" Width="1.5" PointX="5.25" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.history_store" Width="1.5" PointX="2.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.mountains" Width="1.5" PointX="3" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.neschastnsluchai" Width="1.5" PointX="12.75" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.pasport" Width="1.5" PointX="5.25" PointY="15.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.podgotovka" Width="1.5" PointX="5.25" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.pyt" Width="1.5" PointX="15.75" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.soprov" Width="1.5" PointX="10.5" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.strana" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.sysdiagrams" Width="1.5" PointX="4.75" PointY="1" IsExpanded="true" />
+        <AssociationConnector Association="Model.FK__climber__cod_adr__6E01572D" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__mountains__Cod_a__1332DBDC" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__pyt__Cod_ascent__05D8E0BE" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__soprov__cod_asce__7C4F7684" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__climber__Cod_dog__71D1E811" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__climber__cod_pas__6FE99F9F" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__climber__cod_pod__70DDC3D8" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__neschastn__cod_c__07C12930" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__soprov__Cod_dogo__00200768" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__mountains__cod_s__123EB7A3" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_podgotovka_mountains" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_pyt_mountains" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__neschastn__cod_p__08B54D69" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__neschastn__cod_s__09A971A2" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__soprov__cod_pasp__7D439ABD" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__soprov__cod_podg__7F2BE32F" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__pyt__cod_soprov__04E4BC85" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
