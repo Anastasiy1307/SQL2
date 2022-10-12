@@ -167,62 +167,63 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Entities\adres.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>BaseModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\ascent.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>BaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\BaseModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BaseModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\BaseModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\BaseModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BaseModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Entities\climber.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>BaseModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\Dogovor.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>BaseModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\history_store.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entities\Model1.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entities\Model1.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entities\Model1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.edmx</DependentUpon>
+      <DependentUpon>BaseModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\mountains.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>BaseModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\neschastnsluchai.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>BaseModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\pasport.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>BaseModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\podgotovka.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>BaseModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\pyt.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>BaseModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\soprov.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>BaseModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\strana.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>BaseModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\sysdiagrams.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>BaseModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Climbers.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -231,15 +232,15 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Entities\Model1.Context.tt">
+    <Content Include="Entities\BaseModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Model1.Context.cs</LastGenOutput>
-      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>BaseModel.Context.cs</LastGenOutput>
+      <DependentUpon>BaseModel.edmx</DependentUpon>
     </Content>
-    <Content Include="Entities\Model1.tt">
+    <Content Include="Entities\BaseModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model1.edmx</DependentUpon>
-      <LastGenOutput>Model1.cs</LastGenOutput>
+      <DependentUpon>BaseModel.edmx</DependentUpon>
+      <LastGenOutput>BaseModel.cs</LastGenOutput>
     </Content>
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -265,12 +266,12 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\CollectionModelDescription.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
-    <EntityDeploy Include="Entities\Model1.edmx">
+    <EntityDeploy Include="Entities\BaseModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+      <LastGenOutput>BaseModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Entities\Model1.edmx.diagram">
-      <DependentUpon>Model1.edmx</DependentUpon>
+    <Content Include="Entities\BaseModel.edmx.diagram">
+      <DependentUpon>BaseModel.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -295,7 +296,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

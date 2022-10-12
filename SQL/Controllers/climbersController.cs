@@ -9,17 +9,19 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using SQL.Entities;
+using SQL.Models;
 
 namespace SQL.Controllers
 {
     public class climbersController : ApiController
     {
-        private Entities db = new Entities();
+        private Entities1 db = new Entities1();
 
         // GET: api/climbers
-        public IQueryable<climber> Getclimber()
+        [ResponseType(typeof(List<Climbers>))]
+        public IHttpActionResult Getclimber()
         {
-            return db.climber;
+            return Ok(db.climber.ToList().ConvertAll(x => new Climbers(x)));
         }
 
         // GET: api/climbers/5
